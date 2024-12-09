@@ -1,11 +1,14 @@
 <script setup>
-import { ref } from "vue";
-
-const name = ref("Hello Vue 3");
-const status = ref(true);
+import products from "./datas.js";
+import Products from "./Pages/Products.vue";
 </script>
 
 <template>
-  <h1>{{ name }}</h1>
-  <p v-if="status">User is active</p>
+  <div id="app" class="min-h-screen bg-gray-100 p-6">
+    <h1 class="text-center text-3xl font-bold text-gray-800 mb-6">
+      Danh Sách Sản Phẩm
+    </h1>
+
+    <Products :products="products" />
+  </div>
 </template>
