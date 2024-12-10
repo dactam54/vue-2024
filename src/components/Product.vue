@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 const store = props.store;
-console.log("store123", store);
+console.log("storeIsContains", store.products);
 
 let quantity = ref(1);
 const isShow = ref(false);
@@ -24,7 +24,7 @@ const addToCart = (id, quantity) => {
 };
 
 const updateCart = (id, quantity) => {
-  console.log("updateCart", id, quantity);
+  store.updateCart(id, quantity);
 };
 
 const removeProduct = (id) => {
@@ -53,8 +53,6 @@ const selectedProduct = (id) => {
   console.log("selectedProductID", id);
   store.selectedProduct(id);
 };
-
-
 </script>
 
 <template>
@@ -81,14 +79,12 @@ const selectedProduct = (id) => {
         class="w-32 h-32 object-cover"
       />
 
-      <div>
+      <!-- <div>
         {{ store.cart.find((product) => product.id === product.id) }}
-      </div>
+      </div> -->
 
       <button
-        v-if="
-          !isShow && !store.cart.find((product) => product.id === product.id)
-        "
+        v-if="!isShow"
         class="mt-4 p-2 text-green-500 cursor-pointer w-24 border-2 border-green-500 rounded-full shadow-lg hover:shadow-xl"
         @click="addToCart(product.id)"
       >

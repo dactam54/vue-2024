@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-// import CartProduct from "../components/CartProduct.vue";
+import CartProduct from "../components/CartProduct.vue";
 
 const props = defineProps({
   store: {
@@ -17,13 +17,6 @@ const clearCart = () => {
 
 const removeProduct = (id) => {
   store.value.cart = store.value.cart.filter((product) => product.id !== id);
-};
-
-const totalPrice = () => {
-  return store.value.cart.reduce(
-    (total, product) => total + product.detail.price * product.detail.quantity,
-    0
-  );
 };
 </script>
 
@@ -52,8 +45,7 @@ const totalPrice = () => {
 
     <div class="flex justify-between items-center mt-6">
       <p class="text-gray-800 font-bold">
-        Total: {{ totalPrice() }}đ
-        <!-- {{ store.cart.reduce((total, product) => total + product.price, 0) }} -->
+        Total Price: {{ store.totalPrice().toFixed(2) }}
       </p>
     </div>
   </div>

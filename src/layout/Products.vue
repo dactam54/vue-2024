@@ -1,5 +1,4 @@
 <script setup>
-import { toRefs } from "vue";
 import Product from "../components/Product.vue";
 
 const props = defineProps({
@@ -10,7 +9,6 @@ const props = defineProps({
 });
 
 const store = props.store;
-const { products } = toRefs(store);
 </script>
 
 <template>
