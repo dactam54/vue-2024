@@ -1,6 +1,5 @@
 <script setup>
 import { usePinia } from "@/store/usePinia.vue";
-import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
 
 const props = defineProps({
@@ -10,13 +9,12 @@ const props = defineProps({
   },
 });
 
-const { addToCart, removeProduct, updateCart, selectedProduct } = usePinia();
-const { state } = usePinia();
+const { addToCart, removeProduct, updateCart, selectedProduct, state } =
+  usePinia();
 
 let quantity = ref(1);
 
 const addToCartFunc = (id) => {
-  console.log("da vao");
   addToCart(id);
 };
 

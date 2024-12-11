@@ -1,6 +1,6 @@
 <script>
 import { defineStore } from "pinia";
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import products from "../datas.js";
 
 export const usePinia = defineStore("useStore", () => {
@@ -32,14 +32,6 @@ export const usePinia = defineStore("useStore", () => {
     }
   };
 
-  // const totalPrice = computed(() => {
-  //   return state.value.cart.reduce(
-  //     (total, product) =>
-  //       total + product.detail.price * product.detail.quantity,
-  //     0
-  //   );
-  // });
-
   const totalPrice = () => {
     return state.value.cart.reduce(
       (total, product) =>
@@ -47,8 +39,6 @@ export const usePinia = defineStore("useStore", () => {
       0
     );
   };
-
-  console.log("totalPrice", totalPrice);
 
   const removeProduct = (id) => {
     state.value.cart = state.value.cart.filter((product) => product.id !== id);
