@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="flex flex-row gap-5 items-center">
+  <div class="flex flex-row gap-5 items-center w-full justify-between">
     <div class="flex items-center">
       <img
         :src="product?.detail?.image"
@@ -24,7 +24,7 @@ const props = defineProps({
 
       <div class="ml-4">
         <p class="text-gray-800 font-bold">{{ product?.detail?.name }}</p>
-        <p class="text-gray-400">{{ product?.detail?.price }}</p>
+        <p class="text-gray-400">Price: {{ product?.detail?.price }}</p>
         <p class="text-gray-400">Quantity: {{ product?.detail?.quantity }}</p>
       </div>
     </div>

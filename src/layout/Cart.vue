@@ -43,21 +43,22 @@ const totalPriceFunc = () => {
         <p>Chưa có sản phẩm</p>
       </div>
 
-      <div v-else>
+      <div v-else class="flex flex-row flex-wrap">
         <div
           v-for="product in state.cart"
           :key="product.id"
-          class="flex flex-row border-b border-gray-200 py-4"
+          class="flex flex-row border-b border-gray-200 p-4 w-1/2"
         >
           <CartProduct :product="product" :removeProduct="removeProductFunc" />
         </div>
-
-        <div class="flex justify-between items-center mt-6">
-          <p class="text-gray-800 font-bold">
-            Total Price: {{ totalPriceFunc() }}
-          </p>
-        </div>
       </div>
+    </div>
+
+    <div
+      v-if="state.cart?.length !== 0"
+      class="flex justify-between items-center mt-6"
+    >
+      <p class="text-gray-800 font-bold">Total Price: {{ totalPriceFunc() }}</p>
     </div>
   </div>
 </template>

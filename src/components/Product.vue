@@ -80,6 +80,7 @@ watch(
         :src="product.image"
         alt="Product Image"
         class="w-32 h-32 object-cover"
+        @click="selectedProductFunc(product.id)"
       />
 
       <button
