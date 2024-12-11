@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-row gap-5 items-center">
     <div class="flex items-center">
       <img
         :src="product?.detail?.image"
@@ -29,6 +29,11 @@ const props = defineProps({
       </div>
     </div>
 
-    <button @click="removeProduct(product?.id)">X</button>
+    <button
+      @click="removeProduct(product.id)"
+      class="p-1 bg-blue-500 text-white w-8 h-8"
+    >
+      X
+    </button>
   </div>
 </template>

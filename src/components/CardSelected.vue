@@ -10,16 +10,17 @@ const props = defineProps({
 
 const store = props.store;
 
-console.log("store", store);
 </script>
 
 <template>
-  <div>Sản phẩm được chọn</div>
-  <div class="flex flex-row">
+  <div class="w-fit h-fit text-center text-3xl font-bold text-gray-800 mb-6">
+    Sản phẩm được chọn
+  </div>
+  <div class="flex flex-row gap-10">
     <img
       :src="store.selected.image"
       alt="store.selected Image"
-      class="w-32 h-32 object-cover"
+      class="w-48 h-48 object-cover"
     />
 
     <div>

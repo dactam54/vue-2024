@@ -13,13 +13,10 @@ const props = defineProps({
 });
 
 const store = props.store;
-console.log("storeIsContains", store.products);
 
 let quantity = ref(1);
-const isShow = ref(false);
 
-const addToCart = (id, quantity) => {
-  isShow.value = !isShow.value;
+const addToCart = (id) => {
   store.addToCart(id);
 };
 
@@ -29,7 +26,6 @@ const updateCart = (id, quantity) => {
 
 const removeProduct = (id) => {
   store.removeProduct(id);
-  isShow.value = false;
 };
 
 const isDecrease = (id) => {
@@ -37,9 +33,7 @@ const isDecrease = (id) => {
     quantity.value--;
     updateCart(id, quantity.value);
   }
-
   if (quantity.value === 1) {
-    isShow.value = false;
     removeProduct(id);
   }
 };
@@ -50,9 +44,20 @@ const isIncrease = (id) => {
 };
 
 const selectedProduct = (id) => {
-  console.log("selectedProductID", id);
   store.selectedProduct(id);
 };
+
+watch(
+  () => {
+    const cartItem = store.cart.find((item) => item.id === props.product.id);
+    if (cartItem) {
+      quantity.value = cartItem.detail.quantity;
+    } else {
+      quantity.value = 1;
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
@@ -79,19 +84,15 @@ const selectedProduct = (id) => {
         class="w-32 h-32 object-cover"
       />
 
-      <!-- <div>
-        {{ store.cart.find((product) => product.id === product.id) }}
-      </div> -->
-
       <button
-        v-if="!isShow"
+        v-if="!product.isCart"
         class="mt-4 p-2 text-green-500 cursor-pointer w-24 border-2 border-green-500 rounded-full shadow-lg hover:shadow-xl"
         @click="addToCart(product.id)"
       >
         Add
       </button>
 
-      <div v-if="isShow" class="flex items-center p-4">
+      <div v-if="product.isCart" class="flex items-center p-4">
         <button
           @click="isDecrease(product.id)"
           class="bg-gray-200 text-gray-600 p-2 rounded-l-md hover:bg-gray-300"
@@ -100,8 +101,8 @@ const selectedProduct = (id) => {
         </button>
 
         <input
+          v-model="quantity"
           type="number"
-          :value="quantity"
           min="0"
           class="w-12 text-center border-t border-b border-gray-300 focus:outline-none"
         />

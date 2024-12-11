@@ -10,7 +10,6 @@ const store = reactive({
   selected: products[0],
 
   selectedProduct(id) {
-    console.log("AppVue", id);
     store.selected = store.products.find((product) => product.id === id);
   },
 
@@ -24,23 +23,22 @@ const store = reactive({
 
   addToCart(id) {
     const product = store.products.find((product) => product.id === id);
-
     const cartItem = store.cart.find((item) => item.id === id);
-
     if (cartItem) {
       cartItem.detail.quantity++;
     } else {
       store.cart.push({
         id: product.id,
-        // detail: { ...product, quantity: 1 },
-        detail: { ...product, quantity: 1, isContains: true },
+        detail: { ...product, quantity: 1 },
       });
-      product.isContains = true;
+
+      if (product) {
+        product.isCart = true;
+      }
     }
   },
 
   updateCart(id, quantity) {
-    console.log("updateCart", id, quantity);
     const cartItem = store.cart.find((item) => item.id === id);
     if (cartItem) {
       if (quantity > 0) {
@@ -53,10 +51,18 @@ const store = reactive({
 
   removeProduct(id) {
     store.cart = store.cart.filter((product) => product.id !== id);
+    const product = store.products.find((product) => product.id === id);
+    if (product) {
+      product.isCart = false;
+    }
+    // this.updateCart(id, 0);
   },
 
   clearCart() {
     store.cart = [];
+    store.products.map((product) => {
+      product.isCart = false;
+    });
   },
 
   totalPrice() {

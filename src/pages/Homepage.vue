@@ -13,9 +13,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <CardSelected :store="store" />
-  <div class="flex flex-row">
-    <Products :store="store" class="w-1/2" />
-    <Cart :store="store" class="w-1/2" />
+  <div class="flex flex-col items-center gap-3">
+    <CardSelected :store="store" />
+    <div class="flex flex-row gap-20">
+      <Products :store="store" class="w-2/3" />
+      <Cart :store="store" class="w-1/3" />
+    </div>
   </div>
 </template>
