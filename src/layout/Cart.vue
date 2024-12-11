@@ -1,22 +1,19 @@
 <script setup>
-import { ref } from "vue";
 import CartProduct from "../components/CartProduct.vue";
+import { usePinia } from "@/store/usePinia.vue";
 
-const props = defineProps({
-  store: {
-    type: Object,
-    required: true,
-  },
-});
+const { clearCart, removeProduct, totalPrice, state } = usePinia();
 
-const store = ref(props.store);
-
-const clearCart = () => {
-  store.value.clearCart();
+const clearCartFunc = () => {
+  clearCart();
 };
 
-const removeProduct = (id) => {
-  store.value.removeProduct(id);
+const removeProductFunc = (id) => {
+  removeProduct(id);
+};
+
+const totalPriceFunc = () => {
+  return totalPrice().toFixed(2);
 };
 </script>
 
@@ -28,36 +25,36 @@ const removeProduct = (id) => {
 
     <div class="flex flex-row justify-between">
       <h2 class="text-2xl font-bold text-gray-800 w-fit h-fit">
-        {{ store?.cart?.length }} /
-        {{ store?.products?.length }}
+        {{ state?.cart?.length }} /
+        {{ state?.products?.length }}
       </h2>
       <button
-        @click="clearCart"
-        :class="store?.cart?.length === 0 ? 'text-red-500' : ' text-blue-500'"
+        @click="clearCartFunc"
+        :class="state?.cart?.length === 0 ? 'text-red-500' : ' text-blue-500'"
         class="w-fit h-fit"
-        :disabled="store?.cart?.length === 0"
+        :disabled="state?.cart?.length === 0"
       >
         Reset
       </button>
     </div>
 
     <div>
-      <div v-if="store.cart?.length === 0" class="text-center text-gray-800">
+      <div v-if="state.cart?.length === 0" class="text-center text-gray-800">
         <p>Chưa có sản phẩm</p>
       </div>
 
       <div v-else>
         <div
-          v-for="product in store.cart"
+          v-for="product in state.cart"
           :key="product.id"
           class="flex flex-row border-b border-gray-200 py-4"
         >
-          <CartProduct :product="product" :removeProduct="removeProduct" />
+          <CartProduct :product="product" :removeProduct="removeProductFunc" />
         </div>
 
         <div class="flex justify-between items-center mt-6">
           <p class="text-gray-800 font-bold">
-            Total Price: {{ store.totalPrice().toFixed(2) }}
+            Total Price: {{ totalPriceFunc() }}
           </p>
         </div>
       </div>

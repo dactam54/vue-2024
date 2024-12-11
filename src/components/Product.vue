@@ -1,4 +1,6 @@
 <script setup>
+import { usePinia } from "@/store/usePinia.vue";
+import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
 
 const props = defineProps({
@@ -6,35 +8,33 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  store: {
-    type: Object,
-    required: true,
-  },
 });
 
-const store = props.store;
+const { addToCart, removeProduct, updateCart, selectedProduct } = usePinia();
+const { state } = usePinia();
 
 let quantity = ref(1);
 
-const addToCart = (id) => {
-  store.addToCart(id);
+const addToCartFunc = (id) => {
+  console.log("da vao");
+  addToCart(id);
 };
 
-const updateCart = (id, quantity) => {
-  store.updateCart(id, quantity);
+const updateCartFunc = (id, quantity) => {
+  updateCart(id, quantity);
 };
 
-const removeProduct = (id) => {
-  store.removeProduct(id);
+const removeProductFunc = (id) => {
+  removeProduct(id);
 };
 
 const isDecrease = (id) => {
   if (quantity.value > 1) {
     quantity.value--;
-    updateCart(id, quantity.value);
+    updateCartFunc(id, quantity.value);
   }
   if (quantity.value === 1) {
-    removeProduct(id);
+    removeProductFunc(id);
   }
 };
 
@@ -43,13 +43,13 @@ const isIncrease = (id) => {
   updateCart(id, quantity.value);
 };
 
-const selectedProduct = (id) => {
-  store.selectedProduct(id);
+const selectedProductFunc = (id) => {
+  selectedProduct(id);
 };
 
 watch(
   () => {
-    const cartItem = store.cart.find((item) => item.id === props.product.id);
+    const cartItem = state.cart.find((item) => item.id === props.product.id);
     if (cartItem) {
       quantity.value = cartItem.detail.quantity;
     } else {
@@ -71,7 +71,7 @@ watch(
 
       <div
         class="mt-4 text-blue-500 rounded-full cursor-pointer w-fit"
-        @click="selectedProduct(product.id)"
+        @click="selectedProductFunc(product.id)"
       >
         Show details
       </div>
@@ -87,7 +87,7 @@ watch(
       <button
         v-if="!product.isCart"
         class="mt-4 p-2 text-green-500 cursor-pointer w-24 border-2 border-green-500 rounded-full shadow-lg hover:shadow-xl"
-        @click="addToCart(product.id)"
+        @click="addToCartFunc(product.id)"
       >
         Add
       </button>

@@ -1,15 +1,18 @@
 <script setup>
 import { ref } from "vue";
 import Product from "../components/Product.vue";
+import { usePinia } from "@/store/usePinia.vue";
 
-const props = defineProps({
-  store: {
-    type: Object,
-    required: true,
-  },
-});
+// const props = defineProps({
+//   store: {
+//     type: Object,
+//     required: true,
+//   },
+// });
 
-const store = props.store;
+// const store = props.store;
+
+const { state } = usePinia();
 </script>
 
 <template>
@@ -19,10 +22,9 @@ const store = props.store;
     </h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       <Product
-        v-for="product in store.products"
+        v-for="product in state.products"
         :key="product.id"
         :product="product"
-        :store="store"
       />
     </div>
   </div>
