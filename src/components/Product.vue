@@ -60,9 +60,9 @@ watch(
 
 <template>
   <div
-    class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-row justify-between"
+    class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-row justify-between p-6"
   >
-    <div class="p-4">
+    <div>
       <h2 class="text-xl font-semibold text-gray-900">{{ product.name }}</h2>
       <p class="text-gray-600 text-sm mt-2">{{ product.description }}</p>
       <p class="text-lg font-bold text-gray-900 mt-4">${{ product.price }}</p>
@@ -91,7 +91,7 @@ watch(
         Add
       </button>
 
-      <div v-if="product.isCart" class="flex items-center p-4">
+      <div v-if="product.isCart" class="flex items-center mt-4">
         <button
           @click="isDecrease(product.id)"
           class="bg-gray-200 text-gray-600 p-2 rounded-l-md hover:bg-gray-300"

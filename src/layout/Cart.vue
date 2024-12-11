@@ -24,9 +24,8 @@ const totalPriceFunc = () => {
     </div>
 
     <div class="flex flex-row justify-between">
-      <h2 class="text-2xl font-bold text-gray-800 w-fit h-fit">
-        {{ state?.cart?.length }} /
-        {{ state?.products?.length }}
+      <h2 class="text-xl font-bold text-gray-800 w-fit h-fit">
+        {{ state?.cart?.length }} / {{ state?.products?.length }} Added
       </h2>
       <button
         @click="clearCartFunc"
@@ -62,3 +61,5 @@ const totalPriceFunc = () => {
     </div>
   </div>
 </template>
+
+
