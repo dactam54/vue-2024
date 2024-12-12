@@ -3,35 +3,35 @@ export default [
         "id": 1,
         "name": "iPhone 16 Pro Max",
         "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/i/p/iphone-16-pro-max.png",
-        "description": "iPhone 16 Pro Max with advanced features, latest chipsets, and excellent camera quality.",
+        "description": "iPhone 16 Pro Max with advanced features, latest chipsets, and excellent camera quality. iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras. iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras.",
         "price": 1199.99
     },
     {
         "id": 2,
         "name": "iPhone 16 Pro",
         "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/i/p/iphone-16-pro-max.png",
-        "description": "iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras.",
+        "description": "iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras. iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras. iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras.",
         "price": 999.99
     },
     {
         "id": 3,
         "name": "Samsung Galaxy S23 Ultra",
         "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/i/p/iphone-16-pro-max.png",
-        "description": "Samsung Galaxy S23 Ultra with 200MP camera, Snapdragon 8 Gen 2 chip, and stunning AMOLED display.",
+        "description": "Samsung Galaxy S23 Ultra with 200MP camera, Snapdragon 8 Gen 2 chip, and stunning AMOLED display. iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras. iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras.",
         "price": 1199.99
     },
     {
         "id": 4,
         "name": "Google Pixel 8 Pro",
         "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/i/p/iphone-16-pro-max.png",
-        "description": "Google Pixel 8 Pro with Tensor G3 chip, a 50MP camera, and a clean Android experience.",
+        "description": "Google Pixel 8 Pro with Tensor G3 chip, a 50MP camera, and a clean Android experience. iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras.iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras.",
         "price": 899.99
     },
     {
         "id": 5,
         "name": "OnePlus 11 5G",
         "image": "https://cdn2.cellphones.com.vn/x/media/catalog/product/i/p/iphone-16-pro-max.png",
-        "description": "OnePlus 11 5G with Snapdragon 8 Gen 2, 50MP camera, and stunning 120Hz AMOLED display.",
+        "description": "OnePlus 11 5G with Snapdragon 8 Gen 2, 50MP camera, and stunning 120Hz AMOLED display.iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras.iPhone 16 Pro with stunning design, powerful performance, and pro-level cameras.",
         "price": 749.99
     },
     {

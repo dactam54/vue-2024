@@ -1,6 +1,12 @@
 <script setup>
 import { usePinia } from "@/store/usePinia";
+import { ref } from "vue";
 const { state } = usePinia();
+const isReadMore = ref("line-clamp-1");
+
+const changeReadMore = () => {
+  isReadMore.value = isReadMore.value === "line-clamp-1" ? "" : "line-clamp-1";
+};
 </script>
 
 <template>
@@ -25,11 +31,17 @@ const { state } = usePinia();
       <p class="text-lg font-bold text-gray-900 mt-4">
         Price :${{ state.selected.price }}
       </p>
-      <p class="text-gray-600 text-sm mt-2">
+      <p
+        class="text-gray-600 text-sm mt-2 overflow-hidden text-ellipsis"
+        :class="isReadMore"
+      >
         {{ state.selected.description }}
       </p>
 
-      <div class="mt-4 text-blue-500 rounded-full cursor-pointer w-fit">
+      <div
+        class="mt-4 text-blue-500 rounded-full cursor-pointer w-fit"
+        @click="changeReadMore"
+      >
         Read more
       </div>
     </div>
