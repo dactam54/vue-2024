@@ -1,7 +1,6 @@
 <script setup>
 import Homepage from "./pages/Homepage.vue";
 
-
 </script>
 
 <template>
@@ -9,6 +8,3 @@ import Homepage from "./pages/Homepage.vue";
     <Homepage />
   </div>
 </template>
-
-
-

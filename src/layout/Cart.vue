@@ -15,6 +15,7 @@ const removeProductFunc = (id) => {
 const totalPriceFunc = () => {
   return totalPrice().toFixed(2);
 };
+
 </script>
 
 <template>

@@ -9,10 +9,17 @@ const props = defineProps({
   },
 });
 
-const { addToCart, removeProduct, updateCart, selectedProduct, state } =
-  usePinia();
+const {
+  addToCart,
+  removeProduct,
+  updateCart,
+  selectedProduct,
+  loopFunc,
+  state,
+} = usePinia();
 
-let quantity = ref(1);
+const initQuantity = 1;
+let quantity = ref(initQuantity);
 
 const addToCartFunc = (id) => {
   addToCart(id);
@@ -27,11 +34,11 @@ const removeProductFunc = (id) => {
 };
 
 const isDecrease = (id) => {
-  if (quantity.value > 1) {
+  if (quantity.value > initQuantity) {
     quantity.value--;
     updateCartFunc(id, quantity.value);
   }
-  if (quantity.value === 1) {
+  if (quantity.value === initQuantity) {
     removeProductFunc(id);
   }
 };
@@ -47,11 +54,11 @@ const selectedProductFunc = (id) => {
 
 watch(
   () => {
-    const cartItem = state.cart.find((item) => item.id === props.product.id);
+    const cartItem = loopFunc(state.cart, props.product.id);
     if (cartItem) {
       quantity.value = cartItem.detail.quantity;
     } else {
-      quantity.value = 1;
+      quantity.value = initQuantity;
     }
   },
   { immediate: true }
