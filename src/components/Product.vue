@@ -1,5 +1,5 @@
 <script setup>
-import { usePinia } from "@/store/usePinia.vue";
+import { usePinia } from "@/store/usePinia";
 import { ref, watch } from "vue";
 
 const props = defineProps({

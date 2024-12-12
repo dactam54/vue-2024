@@ -1,10 +1,11 @@
-<script>
+
+
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import products from "../datas.js";
 
 export const usePinia = defineStore("useStore", () => {
-  
+
   const state = ref({
     cart: [],
     products: products,
@@ -77,4 +78,4 @@ export const usePinia = defineStore("useStore", () => {
     clearCart,
   };
 });
-</script>
+

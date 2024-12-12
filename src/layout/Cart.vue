@@ -1,6 +1,6 @@
 <script setup>
 import CartProduct from "../components/CartProduct.vue";
-import { usePinia } from "@/store/usePinia.vue";
+import { usePinia } from "@/store/usePinia";
 
 const { clearCart, removeProduct, totalPrice, state } = usePinia();
 
