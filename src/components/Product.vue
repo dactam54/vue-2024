@@ -60,12 +60,14 @@ watch(
 
 <template>
   <div
-    class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-row justify-between p-6"
+    class="border-t-2 border-solid border-grey-500 overflow-hidden flex flex-row justify-between pl-6 pr-6 pt-6 pb-2"
   >
     <div>
       <h2 class="text-xl font-semibold text-gray-900">{{ product.name }}</h2>
-      <p class="text-gray-600 text-sm mt-2">{{ product.description }}</p>
-      <p class="text-lg font-bold text-gray-900 mt-4">${{ product.price }}</p>
+      <p class="text-gray-600 text-sm mt-2">
+        {{ product.description }}
+      </p>
+      <p class="text-lg text-gray-900 mt-4">${{ product.price }}</p>
 
       <div
         class="mt-4 text-blue-500 rounded-full cursor-pointer w-fit"
@@ -85,16 +87,16 @@ watch(
 
       <button
         v-if="!product.isCart"
-        class="mt-4 p-2 text-green-500 cursor-pointer w-24 border-2 border-green-500 rounded-full shadow-lg hover:shadow-xl"
+        class="mt-4 p-2 font-bold text-green-500 cursor-pointer w-24 shadow-md shadow-grey-400 hover:shadow-xl rounded"
         @click="addToCartFunc(product.id)"
       >
-        Add
+        ADD
       </button>
 
-      <div v-if="product.isCart" class="flex items-center mt-4">
+      <div v-if="product.isCart" class="flex items-center mt-4 w-[96px] gap-2">
         <button
           @click="isDecrease(product.id)"
-          class="bg-gray-200 text-gray-600 p-2 rounded-l-md hover:bg-gray-300"
+          class="bg-gray-100 text-gray-600 p-2 hover:bg-gray-300 shadow-md shadow-grey-400"
         >
           -
         </button>
@@ -103,12 +105,13 @@ watch(
           v-model="quantity"
           type="number"
           min="0"
-          class="w-12 text-center border-t border-b border-gray-300 focus:outline-none"
+          class="w-10 text-center border border-gray-300 focus:outline-none bg-inherit shadow-lg h-[40px]"
+          @input="updateCartFunc(product.id, quantity)"
         />
 
         <button
           @click="isIncrease(product.id)"
-          class="bg-gray-200 text-gray-600 p-2 rounded-r-md hover:bg-gray-300"
+          class="bg-gray-100 text-gray-600 p-2 hover:bg-gray-300 shadow-md shadow-grey-400"
         >
           +
         </button>
@@ -116,3 +119,11 @@ watch(
     </div>
   </div>
 </template>
+
+<style scoped>
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>

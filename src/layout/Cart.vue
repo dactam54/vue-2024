@@ -19,12 +19,12 @@ const totalPriceFunc = () => {
 
 <template>
   <div class="flex flex-col gap-5">
-    <div class="text-center text-3xl font-bold text-gray-800 mb-2">
+    <!-- <div class="text-center text-3xl font-bold text-gray-800 mb-2">
       Giỏ hàng
-    </div>
+    </div> -->
 
     <div class="flex flex-row justify-between">
-      <h2 class="text-xl font-bold text-gray-800 w-fit h-fit">
+      <h2 class="text-xl text-gray-800 w-fit h-fit">
         {{ state?.cart?.length }} / {{ state?.products?.length }} Added
       </h2>
       <button
@@ -42,11 +42,11 @@ const totalPriceFunc = () => {
         <p>Chưa có sản phẩm</p>
       </div>
 
-      <div v-else class="flex flex-row flex-wrap">
+      <div v-else class="flex flex-row flex-wrap justify-center">
         <div
           v-for="product in state.cart"
           :key="product.id"
-          class="flex flex-row border-b border-gray-200 p-4 w-1/2"
+          class="flex flex-row border-b border-gray-200 p-4"
         >
           <CartProduct :product="product" :removeProduct="removeProductFunc" />
         </div>
@@ -57,9 +57,9 @@ const totalPriceFunc = () => {
       v-if="state.cart?.length !== 0"
       class="flex justify-between items-center mt-6"
     >
-      <p class="text-gray-800 font-bold">Total Price: {{ totalPriceFunc() }}</p>
+      <p class="text-gray-800 font-bold">
+        Total Price: {{ totalPriceFunc() }}$
+      </p>
     </div>
   </div>
 </template>
-
-
