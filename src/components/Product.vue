@@ -105,7 +105,7 @@ watch(
           v-model="quantity"
           type="number"
           min="0"
-          class="w-10 text-center border border-gray-300 focus:outline-none bg-inherit shadow-lg h-[40px]"
+          class="w-10 text-center border border-gray-300 focus:outline-none bg-inherit shadow-lg h-[40px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           @input="updateCartFunc(product.id, quantity)"
         />
 
@@ -120,10 +120,4 @@ watch(
   </div>
 </template>
 
-<style scoped>
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-</style>
+<style scoped></style>
